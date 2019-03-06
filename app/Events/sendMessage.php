@@ -10,6 +10,8 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+use App\Message;
+
 class sendMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -24,7 +26,7 @@ class sendMessage implements ShouldBroadcast
     public $message;
     public function __construct($message)
     {
-        $this->data = $message;
+        $this->message = $message;
         $this->msg = "You have a new message";
     }
 
