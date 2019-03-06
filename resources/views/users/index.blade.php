@@ -43,7 +43,7 @@
         });
         var channel = pusher.subscribe('muga');
         channel.bind('send-message', function(data) {
-            alert(data.msg);
+            alertify.success(`${data.message.from} say: ${data.message.msg}`);
         });
     </script>
 @endsection
