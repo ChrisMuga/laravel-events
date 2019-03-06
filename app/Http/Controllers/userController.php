@@ -4,17 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Message;
+
 class userController extends Controller
 {
     #index
     public function index(Request $request)
     {
-        return view('users.index');
+        $messages = Message::all();
+        return view('users.index')->with('messages', $messages);
+    }
+    
+    #chris
+    public function chris(Request $request)
+    {
+        return view('users.chris');
     }
 
-    #send-message
-    public function sendMessage(Request $request)
+    #muga
+    public function muga(Request $request)
     {
-        return $request;
+        return view('users.muga');
     }
 }

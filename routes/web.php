@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'userController@index');
-Route::post('/send-message', 'userController@sendMessage');
+Route::get('/chris', 'userController@chris');
+Route::get('/muga', 'userController@muga');
+Route::post('/send-message', 'messageController@sendMessage');
