@@ -37,13 +37,5 @@
             <notifications-component/>
         </div>
     </div>
-    <script>
-        var pusher = new Pusher('82392777e89d910bbb8f', {
-            cluster: 'ap2'
-        });
-        var channel = pusher.subscribe('muga');
-        channel.bind('send-message', function(data) {
-            alertify.success(`${data.message.from} say: ${data.message.msg}`);
-        });
-    </script>
+   
 @endsection

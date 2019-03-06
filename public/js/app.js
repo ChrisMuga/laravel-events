@@ -1802,12 +1802,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var pusher = new Pusher('82392777e89d910bbb8f', {
+      cluster: 'ap2'
+    });
+    var channel = pusher.subscribe('muga');
+    channel.bind('send-message', function (data) {
+      alertify.success("".concat(data.message.from, " say: ").concat(data.message.msg));
+      this.msg = "".concat(data.message.from, " say: ").concat(data.message.msg);
+      console.log(msg);
+    });
     console.log('component: mounted');
   },
   data: function data() {
-    return {};
+    return {
+      msg: []
+    };
   }
 });
 
@@ -36902,20 +36914,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+  return _c(
+    "div",
+    [
       _c("h4", [_vm._v("Notifications")]),
       _vm._v(" "),
-      _c("hr")
-    ])
-  }
-]
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(_vm.msg, function(m) {
+        return _c("p", { key: m }, [_vm._v("2")])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
