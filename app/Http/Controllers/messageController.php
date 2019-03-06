@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\sendMessage;
 use App\Message;
 
 class MessageController extends Controller
@@ -10,7 +11,8 @@ class MessageController extends Controller
     #send-message
     public function sendMessage(Request $request)
     {
-        Message::create($request->all());
+        $msg = Message::create($request->all());
+        event(new sendMessage($msg));
         return back();
     }
 }

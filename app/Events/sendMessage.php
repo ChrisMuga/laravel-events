@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class sendMessage
+class sendMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,9 +19,13 @@ class sendMessage
      *
      * @return void
      */
-    public function __construct()
+
+    public $msg;
+    public $message;
+    public function __construct($message)
     {
-        //
+        $this->data = $message;
+        $this->msg = "You have a new message";
     }
 
     /**
@@ -31,6 +35,11 @@ class sendMessage
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('muga');
+    }
+
+    public function broadcastAs()
+    {
+        return 'send-message';
     }
 }
