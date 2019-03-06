@@ -17,6 +17,7 @@
                     <b class="text-info">{{$message->title}}</b>
                     <p>{{$message->msg}}</p>
                     <h6 class="text-right text-danger">{{$message->from}}</h6>
+                    <hr>
                 @endif
             @endforeach
         </div>
@@ -28,6 +29,7 @@
                     <b class="text-info">{{$message->title}}</b>
                     <p>{{$message->msg}}</p>
                     <h6 class="text-right text-danger">{{$message->from}}</h6>
+                    <hr>
                 @endif
             @endforeach
         </div>
